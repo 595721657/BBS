@@ -34,7 +34,7 @@ public class UserByIdServlet extends HttpServlet {
 		UserServiceImpl us=new UserServiceImpl();
 		//调用通过id查询数据的方法
 		User user=us.getById(id);
-		req.setAttribute("user", user);
+		req.setAttribute("users", user);
 		if(op.equals("bj")) {
 			//页面跳转
 			req.getRequestDispatcher("server/member-edit.jsp").forward(req, resp);

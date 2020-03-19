@@ -2,13 +2,14 @@ package service.plant.impl;
 
 import java.util.List;
 
+import dao.plant.PlantDao;
 import dao.plant.impl.PlantDaoImpl;
 import entity.Plate;
 import service.plant.PlantService;
 
 public class PlantServiceImpl implements PlantService {
 	//创建一个dao层对象
-	PlantDaoImpl pd=new PlantDaoImpl();
+	PlantDao pd=new PlantDaoImpl();
 	int result=0;
     //得到所有板块
 	@Override

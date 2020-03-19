@@ -31,7 +31,7 @@
                   <span class="x-red">*</span>用户名
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="L_username" name="userid" value="${user.userid }" required="" lay-verify="nikename"
+                  <input type="text" id="L_username" name="userid" value="${users.userid }" required="" lay-verify="nikename"
                   autocomplete="off" class="layui-input" readonly="readonly">
               </div>
           </div>
@@ -40,7 +40,7 @@
                   <span class="x-red">*</span>邮箱
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="L_email" name="email" value="${user.usermail }" lay-verify="email"
+                  <input type="text" id="L_email" name="email" value="${users.usermail }" lay-verify="email"
                   autocomplete="off" class="layui-input">
               </div>
               <div class="layui-form-mid layui-word-aux">
@@ -52,13 +52,13 @@
                   <span class="x-red">*</span>性别
               </label>
               <div class="layui-input-inline">
-                  <c:if test="${user.usersex eq '男'  }">
+                  <c:if test="${users.usersex eq '男'  }">
                   	<input type="radio" id="L_username" name="usersex" value="男" lay-verify="nikename"
 	                  autocomplete="off" class="layui-input" checked="checked">男
 	                <input type="radio" id="L_username" name="usersex" value="女" required="" lay-verify="nikename"
 	                  autocomplete="off" class="layui-input">女
                   </c:if>
-                  <c:if test="${user.usersex eq '女' }">
+                  <c:if test="${users.usersex eq '女' }">
                   	<input type="radio" id="L_username" name="usersex" value="男" lay-verify="nikename"
 	                  autocomplete="off" class="layui-input" checked="checked">男
 	                <input type="radio" id="L_username" name="usersex" value="女" required="" lay-verify="nikename"

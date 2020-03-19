@@ -95,5 +95,24 @@ public class Invitation {
 	public Invitation() {
 		super();
 	}
+	public Invitation(String invitationid, String invitationmessage, String userid, int plateid, int categoryid,
+			Date invitationcreate) {
+		super();
+		this.invitationid = invitationid;
+		this.invitationmessage = invitationmessage;
+		this.userid = userid;
+		this.plateid = plateid;
+		this.categoryid = categoryid;
+		this.invitationcreate = invitationcreate;
+	}
+	public Invitation(String invitationid, String invitationmessage, int plateid, int categoryid,
+			Date invitationmodify) {
+		super();
+		this.invitationid = invitationid;
+		this.invitationmessage = invitationmessage;
+		this.plateid = plateid;
+		this.categoryid = categoryid;
+		this.invitationmodify = invitationmodify;
+	}
      
 }

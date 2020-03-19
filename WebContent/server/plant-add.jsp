@@ -87,7 +87,6 @@
         		 data:data.field,
         		 dataType:"text",
         		 success:function(res){
-        			 alert(res);
         			 if(res.trim()=="true"){
         				 layer.alert("增加成功", {icon: 6},function () {
         		                // 获得frame索引

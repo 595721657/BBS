@@ -30,7 +30,7 @@
                  用户名
               </label>
               <div class="layui-input-inline">
-                   <input type="text" id="L_username" name="userid" value="${user.userid }" required="" lay-verify="nikename"
+                   <input type="text" id="L_username" name="userid" value="${users.userid }" required="" lay-verify="nikename"
                   autocomplete="off" class="layui-input" readonly="readonly">
               </div>
           </div>

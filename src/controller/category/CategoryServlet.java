@@ -1,7 +1,6 @@
-package controller.plate;
+package controller.category;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,15 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entity.Plate;
-import service.plant.impl.PlantServiceImpl;
-@WebServlet("/Plates")
-public class PlantsServlet extends HttpServlet {
+@WebServlet("/Category")
+public class CategoryServlet extends HttpServlet {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6006330724195501209L;
+	private static final long serialVersionUID = 3733561139373724004L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,10 +23,12 @@ public class PlantsServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		PlantServiceImpl ps=new PlantServiceImpl();
-		List<Plate> plate=ps.getAllPlate();
-		req.getSession().setAttribute("plate", plate);
-		req.getRequestDispatcher("/server/plant-list.jsp").forward(req, resp);
+		//CategoryServiceImpl ps=new CategoryServiceImpl();
+		/*
+		 * List<Category> category=ps.getall();
+		 * req.getSession().setAttribute("catrgory", category);
+		 * req.getRequestDispatcher("/server/category-list.jsp").forward(req, resp);
+		 */
 	}
 
 }

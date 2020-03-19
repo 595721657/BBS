@@ -110,14 +110,41 @@
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
-                    <cite>模块管理</cite>
+                    <cite>板块管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="${pageContext.request.contextPath }/Plates">
+                        <a _href="server/plant-list.jsp">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>模块管理</cite>
+                            <cite>板块管理</cite>
+                        </a>
+                    </li >
+                     <li>
+                        <a _href="server/category-list.jsp">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>主题管理</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe723;</i>
+                    <cite>帖子管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="server/invitation-list.jsp">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>主帖管理</cite>
+                        </a>
+                    </li >
+                     <li>
+                        <a _href="server/invitation_as-list.jsp">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>回帖管理</cite>
                         </a>
                     </li >
                 </ul>

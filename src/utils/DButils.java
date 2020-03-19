@@ -90,9 +90,18 @@ public class DButils {
 	}
     //创建一个获取系统当前时间的方法
     // 定义一个专门负责日期格式转换的对象
-	SimpleDateFormat format=new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
-	//获取当前时间的方法
-    public String showTime() {	
-		return format.format(new Date());	   
+	static Date  date = new Date();
+	static String invitationid="";
+	static SimpleDateFormat format=new SimpleDateFormat("YYYY-MM-dd-HH-mm-ss");
+    public static String GetId() {	
+    	String id[]=format.format(date).split("-");
+		for (int i = id.length-1; i>=0; i--) {
+			invitationid=id[i]+invitationid;
+		}   
+		return invitationid;
 	}
+    //获得系统当前时间的方法
+    public static Date getDate() {   
+		return date;   	
+    }
 }

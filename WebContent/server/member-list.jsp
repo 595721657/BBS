@@ -79,7 +79,13 @@
             <td>${us.usersex }</td>
             <td>${us.userphoto }</td>
             <td>${us.userscore }</td>
-            <td>${us.userlevel }</td>
+            <td>
+             <c:forEach items="${level }" var="les">
+                 <c:if test="${us.userlevel==les.levelid }">
+                     ${les.levelmessage }
+                 </c:if>
+             </c:forEach>           
+            </td>
             <td>${us.leveldown }</td>
             <td>${us.userlock }</td>
             <td>${us.usercreatedate }</td>
