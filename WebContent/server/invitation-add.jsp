@@ -16,7 +16,6 @@
     <script type="text/javascript" src="${pageContext.request.contextPath }/static/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/static/js/xadmin.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/static/js/cookie.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath }/static/js/wangEditor.min.js"></script>
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
       <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -102,6 +101,7 @@
 			var active = {
 				content : function() {
 					//将富文本框的内容添加到表单
+					alert(layedit.getContent(index)); //获取编辑器内容
 					document.getElementById("input").value=layedit
 							.getContent(index); //给hidden赋值
 				}

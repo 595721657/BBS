@@ -5,7 +5,7 @@
 <html class="x-admin-sm">
   <head>
     <meta charset="UTF-8">
-    <title>BBS论坛系统——帖子管理</title>
+    <title>BBS论坛系统——主帖管理</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -73,7 +73,8 @@
 		              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='${in.invitationid }'><i class="layui-icon">&#xe605;</i></div>
 		            </td>
 		            <td>${in.invitationid }</td>
-		            <td>.......<%-- ${in.invitationmessage } --%></td>
+		            <td><a onclick="x_admin_show('编辑','${pageContext.request.contextPath }/InvitationServlet?op=show&id=${in.invitationid }')" href="javascript:;"><i class="layui-icon">&#xe638;</i>
+		              </a><%-- ${in.invitationmessage } --%></td>
 		            <td>${in.userid }</td>
 		            <td>
 		              <c:forEach items="${plate }" var="pl">
@@ -136,9 +137,7 @@
        /*用户-停用*/
       function member_stop(obj,id){
           layer.confirm('确认要停用吗？',function(index){
-
               if($(obj).attr('title')=='启用'){
-
                 //发异步把用户状态进行更改
                 $(obj).attr('title','停用')
                 $(obj).find('i').jsp('&#xe62f;');

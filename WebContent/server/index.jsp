@@ -5,7 +5,7 @@
 <html  class="x-admin-sm">
 <head>
 	<meta charset="UTF-8">
-	<title>后台BBS</title>
+	<title>后台BBS管理系统</title>
 	<meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -159,19 +159,31 @@
                     <li>
                         <a _href="server/admin-list.jsp">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>管理员列表</cite>
+                            <cite>用户管理</cite>
                         </a>
                     </li >
                     <li>
                         <a _href="server/admin-role.jsp">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>角色管理</cite>
+                            <cite>主题管理</cite>
                         </a>
                     </li >
                     <li>
                         <a _href="server/admin-cate.jsp">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>权限分类</cite>
+                            <cite>板块管理</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="server/admin-cate.jsp">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>主帖管理</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="server/admin-cate.jsp">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>回帖管理</cite>
                         </a>
                     </li >
                     <li>

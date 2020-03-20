@@ -13,11 +13,13 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 import entity.Category;
 import entity.Invitation;
+import entity.InvitationAns;
 import entity.Level;
 import entity.Plate;
 import entity.User;
 import service.category.impl.CategoryServiceImpl;
 import service.invitation.impl.InvitationServiceImpl;
+import service.invitation_ans.impl.Invitation_ansServiceImpl;
 import service.level.impl.LevelServiceImpl;
 import service.plant.impl.PlantServiceImpl;
 import service.user.impl.UserServiceImpl;
@@ -56,9 +58,12 @@ public class LoginServlet extends HttpServlet {
 		//创建一个操作等级的service
 		LevelServiceImpl ls=new LevelServiceImpl();
 		List<Level> level=ls.getall();
-		//创建一个操作帖子的service
+		//创建一个操作主贴的service
 		InvitationServiceImpl is=new InvitationServiceImpl();
 		List<Invitation>  invitation=is.getall();
+		//创建一个操作回帖的数据
+		Invitation_ansServiceImpl iss=new Invitation_ansServiceImpl();
+		List<InvitationAns> invitation_ans=iss.getInvitation_ans();
 	    //获取页面数据
 		String userid=req.getParameter("username");
 		String userpsw=req.getParameter("password");
@@ -72,7 +77,7 @@ public class LoginServlet extends HttpServlet {
 	    	req.getSession().setAttribute("category", category);
 	    	req.getSession().setAttribute("invitation", invitation);
 	    	req.getSession().setAttribute("level", level);
-	    	//req.getSession().setAttribute("name", userid);
+	    	req.getSession().setAttribute("invitation_ans", invitation_ans);
 	    	//req.getSession().setAttribute("name", userid);
 	    	//req.getSession().setAttribute("name", userid);
 	    	//req.getSession().setAttribute("name", userid);
