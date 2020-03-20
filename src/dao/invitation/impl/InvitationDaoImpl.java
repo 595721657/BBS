@@ -99,4 +99,11 @@ public class InvitationDaoImpl implements InvitationDao {
 			// TODO Auto-generated method stub
 			return null;
 		}
+		//ÉóºËÍ¨¹ý
+		@Override
+		public int isPass(String id) {
+			Object params[]= {id};
+			String sql="UPDATE bbs_invitation SET isPass=1 WHERE invitationId=?";
+			return DButils.updateAll(sql, params);
+		}
 }		

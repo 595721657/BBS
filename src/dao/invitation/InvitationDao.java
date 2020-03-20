@@ -21,4 +21,5 @@ public interface InvitationDao {
 	List<Invitation> getInvitationById(String id);
 	//查询再审核的帖子信息
 	List<Invitation> getInvitationByPass(int pass);
+	int isPass(String id);
 }

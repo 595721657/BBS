@@ -66,5 +66,14 @@ public class InvitationServiceImpl implements InvitationService {
 	public List<Invitation> getInvitationById(String id) {
 		return ids.getInvitationById(id);
 	}
+	//ÉóºËÌû×Ó
+	public boolean isPass(String id) {
+		result=ids.isPass(id);
+		if(result>0) {
+			return true;
+		}else {
+		    return false;
+		} 
+	}
 
 }

@@ -64,8 +64,31 @@ public class InvitationsServlet extends HttpServlet {
 		}else if("show".equals(op)) {
 			//调用模糊查询数据的方法
 			showInvitation(req,resp);
+		}else if("audit".equals(op)) {
+			//调用审核的方法
+			auditInvitation(req,resp);
 		}
 	}
+	//审核评论
+	private void auditInvitation(HttpServletRequest req, HttpServletResponse resp) {
+		//接收页面的数据
+		String id=req.getParameter("id");
+		PrintWriter out;
+		try {
+			out = resp.getWriter();
+			boolean isOk = is.isPass(id);
+			if(isOk) { 
+				out.write("true"); 
+				     }
+			else { 
+					out.write("false"); 
+				}
+			out.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+	}
+
 	//展示主贴跟回帖信息
 	private void showInvitation(HttpServletRequest req, HttpServletResponse resp) {
 		String id=req.getParameter("id");

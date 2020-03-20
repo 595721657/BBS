@@ -157,31 +157,31 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="server/admin-list.jsp">
+                        <a _href="${pageContext.request.contextPath }/User">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>用户管理</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="server/admin-role.jsp">
+                        <a _href="server/category-list.jsp">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>主题管理</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="server/admin-cate.jsp">
+                        <a _href="server/plant-list.jsp">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>板块管理</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="server/admin-cate.jsp">
+                        <a _href="server/invitation-list.jsp">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>主帖管理</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="server/admin-cate.jsp">
+                        <a _href="server/invitation_as-list.jsp">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>回帖管理</cite>
                         </a>

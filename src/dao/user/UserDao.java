@@ -1,5 +1,6 @@
 package dao.user;
 
+import java.util.Date;
 import java.util.List;
 
 import entity.User;
@@ -31,4 +32,10 @@ public interface UserDao {
 	int deleteUserAll(String[] id);
 	//模糊查询
 	List<User> getUserByUserid(String userid);
+	//降级
+	int DemotionUser(String userid, Date date);
+	//升级
+	int UpgradeUser(String userid);
+	//禁用
+	int DisableUser(String userid, Date new_date);
 }

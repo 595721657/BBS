@@ -102,6 +102,9 @@
 		              <a title="删除" onclick="member_del(this,'${in.invitationid }')" href="javascript:;">
 		                <i class="layui-icon">&#xe640;</i>
 		              </a>
+		              <a title="审核" onclick="member_audit(this,'${in.invitationid }')" href="javascript:;">
+		                <i class="layui-icon">&#xe611;</i>
+		              </a>
 		            </td>
 		          </tr>
            </c:forEach>
@@ -117,7 +120,6 @@
           <a class="next" href="">&gt;&gt;</a>
         </div>
       </div>
-
     </div>
     <script>
       layui.use('laydate', function(){
@@ -179,6 +181,30 @@
              });
           });
       }
+      /*审核回帖  */
+       function member_audit(obj,id){
+          layer.confirm('确认要通过吗？',function(index){
+        	  //发异步删除数据
+        	  $.ajax({
+            	  url:"${pageContext.request.contextPath }/InvitationServlet?op=audit",
+	              type:"post",
+	              data:"id="+id,
+                  dataType:"text",// servlet中返回的是普通文本
+          	      success:function(text){
+          		    if(text.trim()=="true"){
+          		    	layer.msg('已通过!',{icon:1,time:1000});
+          		    	//刷新当前页面
+          		    	x_admin_father_reload();
+	          		}else{
+	          			 layer.msg('未通过!',{icon:1,time:1000});
+	          			 //刷新当前页面
+	          			 x_admin_father_reload();
+	          		}
+          	      }
+             });
+          });
+      }
+      
       //多行删除
       function delAll (argument) {
         var data = tableCheck.getData();  

@@ -1,5 +1,6 @@
 package service.user.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import dao.user.UserDao;
@@ -90,6 +91,48 @@ public class UserServiceImpl implements UserService {
 	//模糊查询的方法
 	public List<User> getUserByUserid(String userid) {
 		return ud.getUserByUserid(userid);
+	}
+	//降级
+	public boolean DemotionUser(String userid, Date date) {
+		int result=ud.DemotionUser(userid,date);
+		if(result>0) {
+			//删除成功
+			return true;
+		}else {
+			//删除失败
+		    return false;
+		}
+	}
+	//升级
+	public boolean UpgradeUser(String userid) {
+		int result=ud.UpgradeUser(userid);
+		if(result>0) {
+			//删除成功
+			return true;
+		}else {
+			//删除失败
+		    return false;
+		}
+	}
+	//禁用
+	public boolean DisableUser(String userid, Date new_date) {
+		int result=ud.DisableUser(userid,new_date);
+		if(result>0) {
+			//删除成功
+			return true;
+		}else {
+			//删除失败
+		    return false;
+		}
+	}
+	//看看是否禁用
+	@Override
+	public boolean disableUser(Date now, Date end) {
+				if(now.getTime()>end.getTime()) {
+					return true;
+				}else {
+				    return false;
+				}
 	}
 
 }

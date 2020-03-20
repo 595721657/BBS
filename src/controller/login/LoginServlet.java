@@ -23,6 +23,7 @@ import service.invitation_ans.impl.Invitation_ansServiceImpl;
 import service.level.impl.LevelServiceImpl;
 import service.plant.impl.PlantServiceImpl;
 import service.user.impl.UserServiceImpl;
+import utils.DButils;
 @WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
 
@@ -67,26 +68,60 @@ public class LoginServlet extends HttpServlet {
 	    //获取页面数据
 		String userid=req.getParameter("username");
 		String userpsw=req.getParameter("password");
-	    boolean isOk=us.validation(userid, userpsw);
-	    if(isOk) {
-	    	//登录成功
-	    	//将用户名存储在作用域
-	    	req.getSession().setAttribute("name", userid);
-	    	req.getSession().setAttribute("user", user);
-	    	req.getSession().setAttribute("plate", plate);
-	    	req.getSession().setAttribute("category", category);
-	    	req.getSession().setAttribute("invitation", invitation);
-	    	req.getSession().setAttribute("level", level);
-	    	req.getSession().setAttribute("invitation_ans", invitation_ans);
-	    	//req.getSession().setAttribute("name", userid);
-	    	//req.getSession().setAttribute("name", userid);
-	    	//req.getSession().setAttribute("name", userid);
-	    	//req.getSession().setAttribute("name", userid);
-	    	req.getRequestDispatcher("server/index.jsp").forward(req, resp);
-	    }else {
-	    	//登录失败
-	    	resp.sendRedirect("static/login.jsp");
-	    }		
+		//提供userid查询数据
+		User new_user=us.getById(userid);
+		//判断是否禁用
+		
+	    boolean isOk=false;
+        if(new_user.getUserlock()==null) {
+          isOk=us.validation(userid, userpsw);
+        	 if(isOk) {
+        	    	//登录成功
+        	    	//将用户名存储在作用域
+        	    	req.getSession().setAttribute("name", userid);
+        	    	req.getSession().setAttribute("user", user);
+        	    	req.getSession().setAttribute("plate", plate);
+        	    	req.getSession().setAttribute("category", category);
+        	    	req.getSession().setAttribute("invitation", invitation);
+        	    	req.getSession().setAttribute("level", level);
+        	    	req.getSession().setAttribute("invitation_ans", invitation_ans);
+        	    	//req.getSession().setAttribute("name", userid);
+        	    	//req.getSession().setAttribute("name", userid);
+        	    	//req.getSession().setAttribute("name", userid);
+        	    	//req.getSession().setAttribute("name", userid);
+        	    	req.getRequestDispatcher("server/index.jsp").forward(req, resp);
+        	    }else {
+        	    	//登录失败
+        	    	resp.sendRedirect("static/login.jsp");
+        	    }	
+        }else {
+        	boolean isPass=us.disableUser(DButils.getDate(),new_user.getUserlock());
+        	if(isPass) {
+        		isOk=us.validation(userid, userpsw);
+           	 if(isOk) {
+           	    	//登录成功
+           	    	//将用户名存储在作用域
+           	    	req.getSession().setAttribute("name", userid);
+           	    	req.getSession().setAttribute("user", user);
+           	    	req.getSession().setAttribute("plate", plate);
+           	    	req.getSession().setAttribute("category", category);
+           	    	req.getSession().setAttribute("invitation", invitation);
+           	    	req.getSession().setAttribute("level", level);
+           	    	req.getSession().setAttribute("invitation_ans", invitation_ans);
+           	    	//req.getSession().setAttribute("name", userid);
+           	    	//req.getSession().setAttribute("name", userid);
+           	    	//req.getSession().setAttribute("name", userid);
+           	    	//req.getSession().setAttribute("name", userid);
+           	    	req.getRequestDispatcher("server/index.jsp").forward(req, resp);
+           	    }else {
+           	         //登录失败
+           	    	resp.sendRedirect("static/login.jsp");
+           	    }	
+        	}else {
+        		//登录失败
+       	    	resp.sendRedirect("static/login.jsp");
+            }
+        }
 	}
 
 }

@@ -3,6 +3,7 @@ package dao.user.impl;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import dao.user.UserDao;
@@ -133,6 +134,27 @@ public class UserDaoImpl implements UserDao {
 			e.printStackTrace();
 		}
 		return user;
+	}
+	//½µ¼¶
+	@Override
+	public int DemotionUser(String userid, Date date) {
+		String sql="UPDATE  bbs_user SET userLevel=userLevel-1,levelDown=? WHERE userId=?";
+		Object params[]= {date,userid};
+		return DButils.updateAll(sql, params);
+	}
+	//Éý¼¶
+	@Override
+	public int UpgradeUser(String userid) {
+		String sql="UPDATE  bbs_user SET userLevel=userLevel+1 WHERE userId=?";
+		Object params[]= {userid};
+		return DButils.updateAll(sql, params);
+	}
+	//½ûÓÃ
+	@Override
+	public int DisableUser(String userid, Date new_date) {
+		String sql="UPDATE  bbs_user SET userLock=? WHERE userId=?";
+		Object params[]= {new_date,userid};
+		return DButils.updateAll(sql, params);
 	}
 
 }

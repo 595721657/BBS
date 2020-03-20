@@ -118,7 +118,7 @@
          }
          editor.create();
       </script>
-<script>
+      <script>
         layui.use(['form','layer'], function(){
             $ = layui.jquery;
           var form = layui.form

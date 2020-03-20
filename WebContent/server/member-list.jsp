@@ -63,7 +63,6 @@
             <th>降级截止日期</th>
             <th>锁定截止日期</th>
             <th>注册用户日期</th>
-            <th>状态</th>
             <th>操作</th></tr>
         </thead>
         <tbody>
@@ -89,20 +88,24 @@
             <td>${us.leveldown }</td>
             <td>${us.userlock }</td>
             <td>${us.usercreatedate }</td>
-            <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td>
             <td class="td-manage">
-              <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
+              <a title="锁定" onclick="member_stop(this,'${us.userid }')" href="javascript:;"  title="启用">
                 <i class="layui-icon">&#xe601;</i>
               </a>
               <a title="编辑"  onclick="x_admin_show('编辑','${pageContext.request.contextPath }/UserById?id=${us.userid }&op=bj',600,400)" href="javascript:;">
                 <i class="layui-icon">&#xe642;</i>
               </a>
-              <a onclick="x_admin_show('修改密码','${pageContext.request.contextPath }/UserById?id=${us.userid }&op=xg',600,400)" title="修改密码" href="javascript:;">
+              <a title="修改密码" onclick="x_admin_show('修改密码','${pageContext.request.contextPath }/UserById?id=${us.userid }&op=xg',600,400)" title="修改密码" href="javascript:;">
                 <i class="layui-icon">&#xe631;</i>
               </a>
               <a title="删除" onclick="member_del(this,'${us.userid }')" href="javascript:;">
                 <i class="layui-icon">&#xe640;</i>
+              </a>
+               <a title="用户升级" onclick="member_upgrade(this,'${us.userid }')" href="javascript:;">
+                <i class="layui-icon">&#xe619;</i>
+              </a>
+              <a title="用户降级" onclick="member_demotion(this,'${us.userid }')" href="javascript:;">
+                <i class="layui-icon">&#xe61a;</i>
               </a>
             </td>
           </tr>
@@ -135,30 +138,30 @@
           elem: '#end' //指定元素
         });
       });
-
        /*用户-停用*/
       function member_stop(obj,id){
           layer.confirm('确认要停用吗？',function(index){
-
-              if($(obj).attr('title')=='启用'){
-
-                //发异步把用户状态进行更改
-                $(obj).attr('title','停用')
-                $(obj).find('i').html('&#xe62f;');
-
-                $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
-                layer.msg('已停用!',{icon: 5,time:1000});
-
-              }else{
-                $(obj).attr('title','启用')
-                $(obj).find('i').html('&#xe601;');
-
-                $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
-                layer.msg('已启用!',{icon: 5,time:1000});
-              }
-              
-          });
-      }
+          	var person=prompt("请输入你的停用的日期","0000-00-00");
+	          //发异步删除数据
+	      	  $.ajax({
+	          	  url:"${pageContext.request.contextPath }/DisableUser",
+	              type:"post",
+	              data:"id="+id+"&person="+person,
+                  dataType:"text",// servlet中返回的是普通文本
+        	      success:function(text){
+        		    if(text.trim()=="true"){
+        		    	layer.msg('已经禁用!',{icon:1,time:1000});
+        		    	//刷新当前页面
+        		    	x_admin_father_reload();
+	          		}else{
+	          			 layer.msg('禁用失败!',{icon:1,time:1000});
+	          			 //刷新当前页面
+	          			 x_admin_father_reload();
+	          		}
+        	      }
+           });
+        });
+    }
       /*用户-删除*/
       /*单行删除  */
       function member_del(obj,id){
@@ -176,6 +179,52 @@
           		    	x_admin_father_reload();
 	          		}else{
 	          			 layer.msg('删除失败!',{icon:1,time:1000});
+	          			 //刷新当前页面
+	          			 x_admin_father_reload();
+	          		}
+          	      }
+             });
+          });
+      }
+      /* 用户升级 */
+         function member_upgrade(obj,id){
+          layer.confirm('确认要升级吗？',function(index){
+        	  //发异步删除数据
+        	  $.ajax({
+            	  url:"${pageContext.request.contextPath }/UpgradeUser",
+	              type:"post",
+	              data:"id="+id,
+                  dataType:"text",// servlet中返回的是普通文本
+          	      success:function(text){
+          		    if(text.trim()=="true"){
+          		    	layer.msg('升级成功!',{icon:1,time:1000});
+          		    	//刷新当前页面
+          		    	x_admin_father_reload();
+	          		}else{
+	          			 layer.msg('升级失败!',{icon:1,time:1000});
+	          			 //刷新当前页面
+	          			 x_admin_father_reload();
+	          		}
+          	      }
+             });
+          });
+      }
+      /* 用户降级 */
+         function member_demotion(obj,id){
+          layer.confirm('确认要降级吗？',function(index){
+        	  //发异步删除数据
+        	  $.ajax({
+            	  url:"${pageContext.request.contextPath }/DemotionUser",
+	              type:"post",
+	              data:"id="+id,
+                  dataType:"text",// servlet中返回的是普通文本
+          	      success:function(text){
+          		    if(text.trim()=="true"){
+          		    	layer.msg('降级成功!',{icon:1,time:1000});
+          		    	//刷新当前页面
+          		    	x_admin_father_reload();
+	          		}else{
+	          			 layer.msg('降级失败!',{icon:1,time:1000});
 	          			 //刷新当前页面
 	          			 x_admin_father_reload();
 	          		}

@@ -1,5 +1,6 @@
 package service.user;
 
+import java.util.Date;
 import java.util.List;
 
 import entity.User;
@@ -26,5 +27,16 @@ public interface UserService {
 	boolean updateUser(User user);
 	//删除用户的方法
 	boolean deleteUser(String userid);
-	
+	//删除多个
+	boolean deleteUserAll(String[] id);
+	//判断是否禁用
+	boolean disableUser(Date now,Date end);
+	//禁用
+	boolean DisableUser(String userid, Date new_date);
+	//升级
+	boolean UpgradeUser(String userid);
+	//降级
+	boolean DemotionUser(String userid, Date date);
+	//模糊查询
+	List<User> getUserByUserid(String userid);
 }
